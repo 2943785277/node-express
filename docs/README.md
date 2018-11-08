@@ -1,8 +1,8 @@
 # SplderApi2
 
-**Node-SplderApi2 数据爬虫**
+**Node-SplderApi2 第二版**
 
-> 基于 Node+Express 网络爬虫 API 接口 包括前端开发日报、kugou 音乐、前端 top 框架排行、妹纸福利、搞笑视频、段子笑话、各类视频新闻资讯 热点详情接口数据,接口数据更新目标数据变化而变化，接口可以用于框架学习前端对接练习使用.
+> 基于 Node 的网络爬虫 API 接口 包括前端开发日报、kugou 音乐、前端 top 框架排行、妹纸福利、搞笑视频、段子笑话、各类视频新闻资讯 热点详情接口数据
 
 **源代码目录结构**
 **[地址](https://github.com/ecitlm/Node-SpliderApi/tree/splider2)**
@@ -79,7 +79,7 @@ $ node app.js
         photo.js
 ```
 
-**`网络请求封装`httpServer.js`**
+**网络请求封装 `httpServer.js`**
 
 `get`方法
 
@@ -144,8 +144,8 @@ function httpGet(host, data, path, status) {
  * @returns
  */
 function httpPost(host, data, path, status) {
-  let data = querystring.stringify(data)
-  let options = {
+  var data = querystring.stringify(data)
+  var options = {
     host: host,
     port: '80',
     path: path,
@@ -1483,7 +1483,6 @@ function httpPost(host, data, path, status) {
 }
 ```
 
-> 如果对您有帮助，请 Star 支持一下,你的赞赏更是我不竭的动力
+>如果对您有帮助，请 Star 支持一下,你的赞赏更是我不竭的动力
 
 ![赞赏一下呗](http://p0fy79s6b.bkt.clouddn.com/18-7-29/77608319.jpg)
-
