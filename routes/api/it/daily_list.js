@@ -1,41 +1,27 @@
-/*
- * @Author: ecitlm
- * @Date:   2017-12-01 21:02:46
- * @Last Modified by: ecitlm
- * @Last Modified time: 2018-06-29 22:12:54
- */
-
 const express = require('express')
 const cheerio = require('cheerio')					//类似jq选择器
-const app = express()								
+const app = express()					
+const dbs = require('../../../config/dbs')
 const request = require('request')					//请求
 const Iconv = require('iconv-lite')					//转码
+//const connection = require('../../../config/dbs')
 
 
+//
 function Mysql(req,res){
-	/*
-	 node连接数据库  连接到关闭需要在一个函数内执行 否则无法二次执行报错
-	*/
-	var data = []
-	var mysql      = require('mysql');
-	var connection = mysql.createConnection({
-	  host     : 'localhost',
-	  user     : 'hua',
-	  password : '980710',
-	  database : 'test'
-	});
-	var  sql = 'SELECT * FROM user';
-	connection.connect();
-	var name = req.query.name;
-	connection.query(sql,function (err, result) {
-		data = {result,name}
+	//获取前台传参
+	console.log(req)
+	var name = req.query;
+	var sql = 'SELECT * FROM USER_PRIVILEGES ';
+	dbs(sql,[],function(result,fields){
 		res.send({
-          code: 200,
-          data:data,
-          msg: '连接成功'
-       })
+			code: 200,
+        	data:name,
+         	msg: '连接成功'
+		})
 	})
-	connection.end();				//操作完此断开连接
+	
+
 }
 
 function list (req, res) {
@@ -89,7 +75,7 @@ function list (req, res) {
   )
 }
 
-app.get('/', function (req, res) {
+app.post('/', function (req, res) {
 	Mysql(req, res)
   	//list(req, res)
 })

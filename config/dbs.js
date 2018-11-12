@@ -1,18 +1,27 @@
-/*
- * @Author: ecitlm
- * @Date:   2017-11-30 21:16:16
- * @Last Modified by: ecitlm
- * @Last Modified time: 2018-04-14 23:16:11
- */
-const MYSQL = require('mysql') // 调用MySQL模块
-// 创建一个connection
-const connection = MYSQL.createConnection({
-  host: '127.0.0.1', // 主机
-  user: 'root', // MySQL认证用户名
-  password: '',
-  port: '3306',
-  database: 'blog_cms',
-  charset: 'UTF8_GENERAL_CI'
-})
 
-module.exports = connection
+const mysql = require('mysql') // 调用MySQL模块
+// 创建一个connection
+function query(sql, arr, callback){
+	const connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'hua',
+		password : '980710',
+		database : 'information_schema'
+	})
+	/*
+	 node连接数据库  连接到关闭需要在一个函数内执行 否则无法二次执行报错
+	*/
+	//尝试连接
+	connection.connect(function (err) {
+	  if (err) {
+	    console.log('[mysql_query] - :' + err)
+	    return
+	  }
+	  console.log('mysql_success')
+	})
+	connection.query(sql,arr,function (err,result,fields) {
+		callback && callback(result,fields);
+	})
+	connection.end();				//操作完此断开连接
+}
+module.exports = query

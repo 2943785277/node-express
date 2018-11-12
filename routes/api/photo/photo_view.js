@@ -13,14 +13,26 @@ const Iconv = require('iconv-lite')
 const connection = require('../../../config/dbs') // 导入mysq配置文件
 
 // 创建一个connection
-connection.connect(function (err) {
-  if (err) {
-    console.log('[query] - :' + err)
-    return
-  }
-  console.log('数据库链接成功-connection success')
-})
-
+//connection.connect(function (err) {
+//if (err) {
+//  console.log('[query] - :' + err)
+//  return
+//}
+//console.log('数据库链接成功-connection success')
+//})
+//var  sql = 'SELECT * FROM USER_PRIVILEGES';
+//connection.query(sql,function (err, result) {
+//	//data = dbs
+//	var data = []
+//	data = {result}
+//	console.log(data)
+////	res.send({
+////    code: 200,
+////    data:data,
+////    msg: '连接成功'
+//// })
+//})
+//connection.end();				//操作完此断开连接
 function view (req, res) {
   let id = req.params.id || 3788
 
