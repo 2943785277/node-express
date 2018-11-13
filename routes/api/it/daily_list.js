@@ -12,11 +12,15 @@ function Mysql(req,res){
 	//获取前台传参
 	console.log(req.body)
 	var name = JSON.stringify(req.body);
-	var sql = 'SELECT * FROM USER_PRIVILEGES ';
-	dbs(sql,[],function(result,fields){
+	var sql = 'SELECT * FROM user';			//查询
+	var insert = 'INSERT INTO user(id,data,name) VALUES(0,?,?)' 	
+	var data;
+	dbs(insert,[req.body.data,req.body.name],function(result,fields){
+		console.log(result)
+		data = [result,req.body]
 		res.send({
 			code: 200,
-        	data:req.body,
+        	data:data,
          	msg: '连接成功'
 		})
 	})

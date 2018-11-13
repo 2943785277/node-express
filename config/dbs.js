@@ -6,7 +6,7 @@ function query(sql, arr, callback){
 		host     : 'localhost',
 		user     : 'hua',
 		password : '980710',
-		database : 'information_schema'
+		database : 'test'
 	})
 	/*
 	 node连接数据库  连接到关闭需要在一个函数内执行 否则无法二次执行报错

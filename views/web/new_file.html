@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" name="name" id="name" value="" />
+		<input type="text" name="data" id="data" value="" />
+		<button class="btn">提交</button>
+	</body>
+</html>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+	$('.btn').click(function(){
+		$.ajax({
+			type:"post",
+			url:"http://localhost:3001/api/daily_list",
+			data:{name:$('#name').val(),data:$('#data').val()},
+			async:true,
+			success:function(res){
+				console.log(res)
+			}
+		});
+	})
+	
+</script>
