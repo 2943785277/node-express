@@ -7,6 +7,9 @@
 const express = require('express')
 const app = express()
 const router = express.Router()
+const bodyParser = require('body-parser')			//获取POST 参数
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use('/public', express.static('public')) // 设置静态资源地址
 app.use('/docs', express.static('docs')) // 设置静态资源地址
 app.all('*', function (req, res, next) {

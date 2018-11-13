@@ -10,13 +10,13 @@ const Iconv = require('iconv-lite')					//转码
 //
 function Mysql(req,res){
 	//获取前台传参
-	console.log(req)
-	var name = req.query;
+	console.log(req.body)
+	var name = JSON.stringify(req.body);
 	var sql = 'SELECT * FROM USER_PRIVILEGES ';
 	dbs(sql,[],function(result,fields){
 		res.send({
 			code: 200,
-        	data:name,
+        	data:req.body,
          	msg: '连接成功'
 		})
 	})
