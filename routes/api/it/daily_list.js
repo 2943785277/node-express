@@ -12,16 +12,16 @@ function Mysql(req,res){
 	//获取前台传参
 	console.log(req.body)
 	var name = JSON.stringify(req.body);
-	var sql = 'SELECT * FROM user';			//查询
-	var insert = 'INSERT INTO user(id,data,name) VALUES(0,?,?)' 	
+	var sql = 'SELECT * FROM collection';			//查询
+	var insert = 'INSERT INTO collection(id,type,edition,model,content) VALUES(0,?,?,?,?)'	
 	var data;
-	dbs(insert,[req.body.data,req.body.name],function(result,fields){
+	dbs(insert,[req.body.type,req.body.edition,req.body.model,req.body.content],function(result,fields){
 		console.log(result)
-		data = [result,req.body]
+		data = [req.body]
 		res.send({
 			code: 200,
         	data:data,
-         	msg: '连接成功'
+         	msg: '增加成功'
 		})
 	})
 	
